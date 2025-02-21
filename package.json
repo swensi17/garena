@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev -p 8000",
-    "build": "next build && touch out/.nojekyll",
+    "build": "next build",
     "start": "next start -p 8000",
     "lint": "next lint"
   },
@@ -15,7 +15,8 @@
     "@types/node": "^20.11.16",
     "@types/react": "^18.2.52",
     "@types/react-dom": "^18.2.18",
-    "typescript": "^5.3.3"
+    "typescript": "^5.3.3",
+    "sharp": "^0.33.2"
   },
   "devDependencies": {
     "autoprefixer": "^10.4.17",

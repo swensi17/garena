@@ -3,10 +3,15 @@ const nextConfig = {
   output: 'export',
   images: {
     unoptimized: true,
-    domains: ['i.postimg.cc', 'postimg.cc']
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: '**',
+      }
+    ]
   },
-  basePath: '/garena',
-  assetPrefix: '/garena/',
+  basePath: process.env.NODE_ENV === 'production' ? '/garena' : '',
+  assetPrefix: process.env.NODE_ENV === 'production' ? '/garena/' : '',
   reactStrictMode: true,
   trailingSlash: true,
   distDir: 'out'
