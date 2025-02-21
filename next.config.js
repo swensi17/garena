@@ -1,14 +1,24 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   images: {
-    remotePatterns: [],
     unoptimized: true,
-    domains: ['postimg.cc', 'i.postimg.cc']
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'i.postimg.cc',
+        pathname: '/**',
+      },
+      {
+        protocol: 'https',
+        hostname: 'postimg.cc',
+        pathname: '/**',
+      }
+    ]
   },
-  reactStrictMode: true,
   output: 'export',
-  basePath: '/garena',
-  assetPrefix: '/garena/'
+  basePath: '',
+  assetPrefix: '',
+  trailingSlash: true
 }
 
 module.exports = nextConfig 
