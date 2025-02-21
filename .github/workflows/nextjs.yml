@@ -35,11 +35,11 @@ jobs:
         with:
           node-version: 20
           cache: 'npm'
-      - name: Install dependencies
+      - name: Clean install dependencies
         run: |
+          rm -rf node_modules
+          rm -f package-lock.json
           npm install
-          npm install -D postcss-preset-env
-          npm install sharp
       - name: Build
         run: |
           npm run build

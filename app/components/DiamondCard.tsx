@@ -10,6 +10,7 @@ interface DiamondPackageProps {
   price: number;
   oldPrice?: number;
   image: string;
+  onBuy?: () => void;
 }
 
 const getGradientByPackage = (id: number) => {
@@ -55,12 +56,17 @@ export default function DiamondCard({
   bonus,
   price,
   oldPrice,
-  image
+  image,
+  onBuy
 }: DiamondPackageProps) {
   const router = useRouter();
 
   const handleBuy = () => {
-    router.push(`/purchase?package=${encodeURIComponent(name)}&diamonds=${diamonds}&price=${price}`);
+    if (onBuy) {
+      onBuy();
+    } else {
+      router.push(`/purchase?package=${encodeURIComponent(name)}&diamonds=${diamonds}&price=${price}`);
+    }
   };
 
   return (

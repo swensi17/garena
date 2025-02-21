@@ -10,11 +10,10 @@ const nextConfig = {
       }
     ]
   },
-  basePath: process.env.NODE_ENV === 'production' ? '/garena' : '',
+  basePath: '/garena',
   assetPrefix: process.env.NODE_ENV === 'production' ? '/garena/' : '',
   reactStrictMode: true,
   trailingSlash: true,
-  distDir: 'out'
 }
 
 module.exports = nextConfig 

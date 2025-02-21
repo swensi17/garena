@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, Suspense } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
 import Image from 'next/image';
 
@@ -11,7 +11,7 @@ interface PurchaseStep {
   icon: React.ReactNode;
 }
 
-export default function PurchasePage() {
+function PurchaseContent() {
   const [currentStep, setCurrentStep] = useState(1);
   const [bindingType, setBindingType] = useState('');
   const [formData, setFormData] = useState({
@@ -684,5 +684,20 @@ export default function PurchasePage() {
         </div>
       )}
     </main>
+  );
+}
+
+export default function PurchasePage() {
+  return (
+    <Suspense fallback={
+      <div className="min-h-screen flex items-center justify-center bg-[#1a1a2e]">
+        <div className="text-center">
+          <div className="w-16 h-16 border-4 border-blue-500 border-t-transparent rounded-full animate-spin mx-auto mb-4"></div>
+          <p className="text-white text-lg">Загрузка...</p>
+        </div>
+      </div>
+    }>
+      <PurchaseContent />
+    </Suspense>
   );
 } 
